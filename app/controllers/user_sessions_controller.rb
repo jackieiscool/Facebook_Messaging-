@@ -5,6 +5,7 @@ class UserSessionsController < ApplicationController
   def create
     session[:facebook_token] = request.env['omniauth.auth']['credentials']['token']
     session[:user_info] = request.env['omniauth.auth']['info']
+    session[:facebook_user_id] = request.env['omniauth.auth']['uid']
     redirect_to '/'
   end
 
@@ -15,6 +16,7 @@ class UserSessionsController < ApplicationController
   def destroy
     session[:facebook_token] = nil
     session[:user_info] = nil
+    session[:facebook_user_id] = nil
     render :text => 'You have logged out'
   end
 end
