@@ -5,4 +5,8 @@ LoginFacebook::Application.routes.draw do
   get '/logout', :to => 'user_sessions#destroy', :as => :logout
   match '/auth/:provider/callback', :to => 'user_sessions#create'
   match '/auth/failure', :to => 'user_sessions#failure'
+
+  resources :users
+  resources :messages
+  resources :conversations
 end
