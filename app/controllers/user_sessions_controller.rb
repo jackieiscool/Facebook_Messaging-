@@ -3,6 +3,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    user = User.from_omniauth(env["omniauth.auth"])
     session[:facebook_token] = request.env['omniauth.auth']['credentials']['token']
     session[:user_info] = request.env['omniauth.auth']['info']
     session[:facebook_user_id] = request.env['omniauth.auth']['uid']
