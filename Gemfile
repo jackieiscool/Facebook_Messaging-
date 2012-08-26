@@ -44,3 +44,4 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 gem 'omniauth-facebook'
+gem 'fb_graph', '~> 2.4.19'
