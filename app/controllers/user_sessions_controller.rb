@@ -4,12 +4,12 @@ class UserSessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
+    # user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
 
     session[:facebook_token] = request.env['omniauth.auth']['credentials']['token']
     session[:user_info] = request.env['omniauth.auth']['info']
     session[:facebook_user_id] = request.env['omniauth.auth']['uid']
-    redirect_to '/'
+    redirect_to root_path
   end
 
   def failure

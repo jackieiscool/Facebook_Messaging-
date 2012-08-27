@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120826211852) do
+ActiveRecord::Schema.define(:version => 20120827010047) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject"
@@ -28,15 +28,15 @@ ActiveRecord::Schema.define(:version => 20120826211852) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
     t.string   "email"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "uid"
     t.string   "provider"
-    t.string   "fb_access_token"
-    t.integer  "fb_user_id",      :default => 0
+    t.string   "name"
+    t.string   "auth_token"
+    t.string   "auth_secret"
+    t.string   "image"
   end
 
 end

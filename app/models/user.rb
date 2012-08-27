@@ -1,4 +1,5 @@
-class User < ActiveRecord::Base
+authclass User < ActiveRecord::Base
+  include FacebookClient
   attr_accessible :email, :firstname, :lastname
   has_many :user_conversations
   has_many :conversations, :through => :user_conversations
@@ -12,9 +13,10 @@ class User < ActiveRecord::Base
     create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
-      user.firstname = auth["info"]["firstname"]
-      user.lastname = auth["info"]["lastname"]
+      user.name = auth["info"]["name"]
       user.email = auth["info"]["email"]
+      user.auth_token = auth["credentials"]["token"]
+      user.auth_secret = auth["credentials"]["secret"]
     end
   end
 end
