@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   #   @user = FbGraph::User.me(facebook_token)
   # end
 
+  def logged_in
+    current_user != nil
+  end
+
   private
 
   def check_for_authorization
