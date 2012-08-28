@@ -1,12 +1,12 @@
 <%= form_for @conversation do |f| %>
 
   <%= f.label :subject %>
-  <%= f.text_field :subject %>
+  <%= f.text_field :subject %><br/>
 
   <%= f.fields_for :user_conversations do |builder| %>
     <%= builder.label :to %>
     <%= builder.text_field :user_id %>
-  <% end %>
+  <% end %><br/>
 
   <%= f.fields_for :messages do |builder| %>
     <%= builder.label :messages %>
