@@ -2,6 +2,3 @@ Hello! <%= @user_info['name'] %>
 
 <%= link_to "Send a new message!", new_conversation_path %><br />
 
-<% @friends .each do |friend| %>
-  <% friend.name %><br/>
-<% end %>

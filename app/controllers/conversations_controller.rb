@@ -9,12 +9,13 @@ include Kernel
   def new
     @conversation = Conversation.new
     @message = @conversation.messages.build
+    @user_conversation = @conversation.user_conversations.build
   end
 
   def create
     @conversation = Conversation.new(params[:conversation])
     @message = Message.create(params[:messages])
-    audit(current_user)
+    @user_conversation = User_Conversation.create(params[:user_conversations])
     @message.user_id = current_user.id
     @message.save
     if @conversation.save
@@ -29,6 +30,12 @@ include Kernel
   end
 
   def destroy
+  end
+
+  def return_friends
+    @friends = User.order(:friend_name).where("name like ?", "%#{params[:term]}%")
+    audit(@friends)
+    render json: @friends.map(&:friend_name)
   end
 
 end

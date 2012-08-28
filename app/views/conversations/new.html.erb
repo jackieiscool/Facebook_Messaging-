@@ -3,6 +3,11 @@
   <%= f.label :subject %>
   <%= f.text_field :subject %>
 
+  <%= f.fields_for :user_conversations do |builder| %>
+    <%= builder.label :to %>
+    <%= builder.text_field :user_id %>
+  <% end %>
+
   <%= f.fields_for :messages do |builder| %>
     <%= builder.label :messages %>
     <%= builder.text_area :body %>

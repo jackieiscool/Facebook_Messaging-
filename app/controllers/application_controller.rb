@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  # def facebook_user
+  #   @user = FbGraph::User.me(facebook_token)
+  # end
+
   private
 
   def check_for_authorization

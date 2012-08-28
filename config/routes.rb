@@ -8,7 +8,10 @@ LoginFacebook::Application.routes.draw do
 
   resources :users
 
+  match 'friend_object' => "conversations#return_friends"
+
   resources :conversations do
+    resources :user_conversations
     resources :messages
   end
 end
