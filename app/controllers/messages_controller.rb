@@ -8,12 +8,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(params[:message])
-    if @message.save
-      redirect_to root_path
-    else
-      render 'new'
-    end
+    @conversation = Conversation.find(params[:conversation_id])
+    @message = @conversation.messages.build(params[:message])
+    # @message.user_id = current_user.id
+    @message.save
   end
 
   def edit

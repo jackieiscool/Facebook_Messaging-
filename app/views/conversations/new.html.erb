@@ -1,0 +1,13 @@
+<%= form_for @conversation do |f| %>
+
+  <%= f.label :subject %>
+  <%= f.text_field :subject %>
+
+  <%= f.fields_for :messages do |builder| %>
+    <%= builder.label :messages %>
+    <%= builder.text_area :body %>
+  <% end %>
+
+<%= f.submit "Send" %>
+
+<% end %>
