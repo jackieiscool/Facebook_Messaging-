@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # def facebook_user
-  #   @user = FbGraph::User.me(facebook_token)
-  # end
-
   def logged_in
     current_user != nil
   end

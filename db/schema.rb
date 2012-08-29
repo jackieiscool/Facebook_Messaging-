@@ -11,12 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828011454) do
+ActiveRecord::Schema.define(:version => 20120829010811) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "friends", :force => true do |t|
+    t.integer  "facebook_uid"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "name"
   end
 
   create_table "messages", :force => true do |t|
@@ -32,18 +40,20 @@ ActiveRecord::Schema.define(:version => 20120828011454) do
     t.integer  "conversation_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "friend_name"
   end
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "uid"
     t.string   "provider"
     t.string   "name"
     t.string   "auth_token"
     t.string   "auth_secret"
     t.string   "image"
+    t.integer  "facebook_uid"
   end
 
 end

@@ -7,6 +7,8 @@ LoginFacebook::Application.routes.draw do
   match '/auth/failure', :to => 'user_sessions#failure'
 
   resources :users
+  resources :friends
+  resources :user_sessions
 
   match 'friend_object' => "conversations#return_friends"
 

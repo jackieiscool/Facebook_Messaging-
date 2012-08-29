@@ -1,7 +1,5 @@
 class ConversationsController < ApplicationController
 
-include Kernel
-
   def index
     @conversations = Conversation.all
   end
@@ -15,7 +13,7 @@ include Kernel
   def create
     @conversation = Conversation.new(params[:conversation])
     @message = Message.create(params[:messages])
-    @user_conversation = User_Conversation.create(params[:user_conversations])
+    @user_conversation = UserConversation.create(params[:user_conversations])
     @message.user_id = current_user.id
     @message.save
     if @conversation.save
@@ -32,10 +30,9 @@ include Kernel
   def destroy
   end
 
-  def return_friends
-    @friends = User.order(:friend_name).where("name like ?", "%#{params[:term]}%")
-    audit(@friends)
-    render json: @friends.map(&:friend_name)
+  def current_user
+    audit(current_user)
+    current_user
   end
 
 end

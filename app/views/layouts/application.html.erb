@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="user_nav" class="container">
-        <%= link_to "Logout", logout_path, :method => :delete %>
+        <%= link_to "Logout", 'user_sessions#destroy', :method => :delete %>
         <%= link_to "Login", login_path %>
   </div>
   <%= yield %>

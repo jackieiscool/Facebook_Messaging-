@@ -5,7 +5,7 @@
 
   <%= f.fields_for :user_conversations do |builder| %>
     <%= builder.label :to %>
-    <%= builder.text_field :user_id %>
+    <%= builder.text_field :friend_name %>
   <% end %><br/>
 
   <%= f.fields_for :messages do |builder| %>
