@@ -1,5 +1,8 @@
 class FriendsController < ApplicationController
   def index
+    user = FBGraph::User.me(facebook_token)
+    user.fetch
+    @friends = user.friends
   end
 
   def new
@@ -16,4 +19,5 @@ class FriendsController < ApplicationController
 
   def destroy
   end
+
 end

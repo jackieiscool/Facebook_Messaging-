@@ -32,9 +32,5 @@ include Kernel
   def destroy
   end
 
-  def return_friends
-    user = FBGraph::user.me(facebook_token)
-    @friends = User.friends
-  end
 
 end
