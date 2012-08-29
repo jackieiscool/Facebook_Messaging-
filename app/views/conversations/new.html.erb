@@ -5,8 +5,8 @@
 
   <%= f.fields_for :user_conversations do |builder| %>
     <%= builder.label :to %>
-    <%= builder.text_field :friend_name %>
-  <% end %><br/>
+    <%= builder.select() %>
+  <% end %>
 
   <%= f.fields_for :messages do |builder| %>
     <%= builder.label :messages %>

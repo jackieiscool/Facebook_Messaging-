@@ -1,5 +1,7 @@
 class ConversationsController < ApplicationController
 
+include Kernel
+
   def index
     @conversations = Conversation.all
   end
@@ -13,7 +15,7 @@ class ConversationsController < ApplicationController
   def create
     @conversation = Conversation.new(params[:conversation])
     @message = Message.create(params[:messages])
-    @user_conversation = UserConversation.create(params[:user_conversations])
+    @user_conversation = User_Conversation.create(params[:user_conversations])
     @message.user_id = current_user.id
     @message.save
     if @conversation.save
@@ -30,9 +32,9 @@ class ConversationsController < ApplicationController
   def destroy
   end
 
-  def current_user
-    audit(current_user)
-    current_user
+  def return_friends
+    user = FBGraph::user.me(facebook_token)
+    @friends = User.friends
   end
 
 end
